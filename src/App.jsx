@@ -227,31 +227,28 @@ export default function App() {
     const fetchImages = async () => {
       try {
         const SHEET_ID = '1xU1nf6PF_tupF0A41MWd1aEw0VIL54ZC0ljUVZxEUaA';
-        const GID = '961212848'; 
-        const timestamp = new Date().getTime();
-        // Use Google Visualization API endpoint for reliable CORS support
-        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${GID}&t=${timestamp}`;
-        
-        // Fetch directly from Google Sheets (CORS is supported for public exports)
+        const GID = '961212848';
+        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+
         const res = await fetch(url);
         if (res.ok) {
           const text = await res.text();
-          const rows = text.split('\n').slice(1); // skip header row
-          
+          // Google wraps response in /*O_o*/\ngoogle.visualization.Query.setResponse(...)
+          const jsonStart = text.indexOf('{');
+          const jsonEnd = text.lastIndexOf('}');
+          const json = JSON.parse(text.slice(jsonStart, jsonEnd + 1));
+
+          const rows = json?.table?.rows || [];
           const sheetImages = [];
+
           rows.forEach(row => {
-            const cols = row.split(',');
-            // Find the column that contains 'http'
-            let urlCol = cols.find(c => c.includes('http'));
-            
-            if (urlCol) {
-              // Remove any leading/trailing quotes from the CSV parse
-              urlCol = urlCol.trim().replace(/^"|"$/g, '');
-              sheetImages.push({
-                src: urlCol,
-                alt: 'Portfolio Media'
-              });
-            }
+            const cells = row?.c || [];
+            cells.forEach(cell => {
+              const val = cell?.v;
+              if (val && typeof val === 'string' && val.includes('http')) {
+                sheetImages.push({ src: val.trim(), alt: 'Portfolio Media' });
+              }
+            });
           });
 
           if (sheetImages.length > 0) {
@@ -265,6 +262,7 @@ export default function App() {
 
     fetchImages();
   }, []);
+
 
   const carouselTitle = (
     <>
