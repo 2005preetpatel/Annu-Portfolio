@@ -150,7 +150,7 @@ const DynamicMedia = ({ src, alt, className }) => {
         {isVisible && (
           <>
             <iframe
-              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1`}
+              src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&vq=hd1080&hd=1&quality=hd1080`}
               className={className}
               allow="autoplay; encrypted-media"
               loading="lazy"
