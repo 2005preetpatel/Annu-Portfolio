@@ -200,63 +200,67 @@ export default function App() {
 
   const [activeVideo, setActiveVideo] = React.useState(null);
   const [showAllVideos, setShowAllVideos] = React.useState(false);
+
+  // ✅ Actual YouTube Videos - Hardcoded (Vercel pe bhi perfectly chalega)
   const [carouselImages, setCarouselImages] = React.useState([
     {
-      src: 'https://images.unsplash.com/photo-1504051771394-dd2e66b2e08f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-      alt: 'Professional portrait of a woman',
+      src: 'https://www.youtube.com/watch?v=kKDSj70UhwU',
+      alt: 'Portfolio Video 1',
     },
     {
-      src: 'https://images.unsplash.com/photo-1526510747491-58f928ec870f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-      alt: 'Scenic landscape',
+      src: 'https://www.youtube.com/watch?v=Rw4Nay3fHok',
+      alt: 'Portfolio Video 2',
     },
     {
-      src: 'https://plus.unsplash.com/premium_photo-1670282392820-e3590c1c5c54?w=900&auto=format&fit=crop&q=60',
-      alt: 'Artistic photo of a girl',
+      src: 'https://www.youtube.com/watch?v=iCmrUfu5WME',
+      alt: 'Portfolio Video 3',
     },
     {
-      src: 'https://images.unsplash.com/photo-1581403341630-a6e0b9d2d257?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-      alt: 'A dog wearing sunglasses',
+      src: 'https://www.youtube.com/watch?v=Y4A_L8RFFyk',
+      alt: 'Portfolio Video 4',
     },
     {
-      src: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0',
-      alt: 'Creative shot of a person',
+      src: 'https://www.youtube.com/watch?v=7b1COwUOOZs',
+      alt: 'Portfolio Video 5',
     },
   ]);
 
+  // Google Sheets se dynamic fetch (agar sheet publicly accessible ho)
   React.useEffect(() => {
     const fetchImages = async () => {
       try {
         const SHEET_ID = '1xU1nf6PF_tupF0A41MWd1aEw0VIL54ZC0ljUVZxEUaA';
         const GID = '961212848';
-        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+        // CSV format use karo - JSON format Vercel pe CORS issue karta hai
+        const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
-        const res = await fetch(url);
+        const res = await fetch(url, { mode: 'cors' });
         if (res.ok) {
           const text = await res.text();
-          // Google wraps response in /*O_o*/\ngoogle.visualization.Query.setResponse(...)
-          const jsonStart = text.indexOf('{');
-          const jsonEnd = text.lastIndexOf('}');
-          const json = JSON.parse(text.slice(jsonStart, jsonEnd + 1));
-
-          const rows = json?.table?.rows || [];
+          const lines = text.trim().split('\n');
           const sheetImages = [];
 
-          rows.forEach(row => {
-            const cells = row?.c || [];
-            cells.forEach(cell => {
-              const val = cell?.v;
-              if (val && typeof val === 'string' && val.includes('http')) {
-                sheetImages.push({ src: val.trim(), alt: 'Portfolio Media' });
+          lines.forEach(line => {
+            // CSV ki har cell check karo
+            const cells = line.split(',').map(c => c.replace(/"/g, '').trim());
+            cells.forEach(val => {
+              if (val && val.startsWith('http')) {
+                sheetImages.push({ src: val, alt: 'Portfolio Media' });
               }
             });
           });
 
+          console.log('Sheet se mile URLs:', sheetImages.map(i => i.src));
+
           if (sheetImages.length > 0) {
             setCarouselImages(sheetImages);
           }
+        } else {
+          console.warn('Google Sheet fetch failed, status:', res.status);
         }
       } catch (error) {
-        console.error("Error fetching images from Google Sheet:", error);
+        console.error("Google Sheet fetch error:", error.message);
+        // Fallback: hardcoded URLs use honge
       }
     };
 
