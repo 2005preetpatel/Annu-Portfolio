@@ -154,11 +154,11 @@ const DynamicMedia = ({ src, alt, className }) => {
               className={className}
               allow="autoplay; encrypted-media"
               loading="lazy"
-              style={{ 
-                border: 'none', 
-                pointerEvents: 'none', 
-                width: '100%', 
-                height: '100%', 
+              style={{
+                border: 'none',
+                pointerEvents: 'none',
+                width: '100%',
+                height: '100%',
                 transform: 'scale(1.5)',
               }}
               title={alt}
@@ -300,22 +300,10 @@ export default function App() {
             </span>
           </motion.div>
 
-          {/* Navigation Links + Social Icons */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }} style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+          {/* Navigation Links */}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }} style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
             <a href="#work" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Works</a>
             <a href="#about" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Studio</a>
-            {/* Social Icons */}
-            <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
-              <a href="https://www.instagram.com/annu_ananya__/" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
-                <Instagram size={15} />
-              </a>
-              <a href="https://www.linkedin.com/in/ananya-sharma-600702330" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
-                <Linkedin size={15} />
-              </a>
-              <a href="https://wa.me/917693076360" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
-                <Whatsapp size={15} />
-              </a>
-            </div>
             <a href="#contact" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '0.75rem', background: 'var(--accent-color)', color: '#000', border: 'none', borderRadius: '100px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Let's Talk
             </a>
@@ -362,8 +350,8 @@ export default function App() {
 
               {/* Buttons and Scroll Indicator */}
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '2rem', alignItems: 'center', marginTop: '4rem', marginLeft: '5vw' }}>
-                <button 
-                  className="btn hover-target" 
+                <button
+                  className="btn hover-target"
                   style={{ borderRadius: '100px', border: '1px solid rgba(255,255,255,0.2)', padding: '1rem 2rem', gap: '1rem', background: 'transparent', cursor: 'pointer' }}
                   onClick={() => setActiveVideo(carouselImages[0]?.src)}
                 >
@@ -401,7 +389,7 @@ export default function App() {
               <h2 className="subtitle" style={{ marginBottom: '1rem' }}>Selected Archive</h2>
               <h3 className="title-lg">Featured Works<span className="text-gold">.</span></h3>
             </div>
-            <div 
+            <div
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--text-primary)', cursor: 'pointer' }}
               onClick={() => setShowAllVideos(!showAllVideos)}
             >
@@ -417,15 +405,15 @@ export default function App() {
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
                 className="hover-target"
               >
-                <div 
-                  className="reveal-wrapper" 
-                  style={{ 
-                    aspectRatio: '9/16', 
-                    width: '100%', 
-                    marginBottom: '1.5rem', 
-                    overflow: 'hidden', 
-                    position: 'relative', 
-                    borderRadius: '1rem', 
+                <div
+                  className="reveal-wrapper"
+                  style={{
+                    aspectRatio: '9/16',
+                    width: '100%',
+                    marginBottom: '1.5rem',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    borderRadius: '1rem',
                     cursor: 'pointer',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
                   }}
@@ -433,7 +421,7 @@ export default function App() {
                 >
                   <DynamicMedia src={media.src} alt={media.alt || `Portfolio ${index + 1}`} className="reveal-image" />
                 </div>
-                
+
               </motion.div>
             ))}
           </div>
@@ -569,7 +557,7 @@ export default function App() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2.5rem', marginTop: '5rem', flexWrap: 'wrap', gap: '1rem' }}>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0, letterSpacing: '0.05em' }}>© 2026 Ananya Sharma. All rights reserved.</p>
               <div style={{ display: 'flex', gap: '2.5rem' }}>
-                <a href="https://ananyasharmaacting.netlify.app/" target="_blank" rel="noopener noreferrer" className="glitch-link hover-target" style={{ textDecoration: 'none' }}>Acting Portfolio</a>
+
                 <a href="#" className="hover-target" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.3s ease' }}>Privacy Policy</a>
                 <a href="#" className="hover-target" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', textDecoration: 'none', transition: 'color 0.3s ease' }}>Terms of Service</a>
               </div>
@@ -580,7 +568,7 @@ export default function App() {
 
       {/* Fullscreen Video Modal */}
       {activeVideo && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -598,7 +586,7 @@ export default function App() {
             backdropFilter: 'blur(10px)'
           }}
         >
-          <button 
+          <button
             onClick={() => setActiveVideo(null)}
             className="hover-target"
             style={{
@@ -615,17 +603,17 @@ export default function App() {
           >
             <XIcon size={32} />
           </button>
-          
+
           <div style={{ width: '90%', height: '90%', maxWidth: '1600px', position: 'relative', overflow: 'hidden', borderRadius: '1rem' }}>
             {activeVideo.includes('youtube.com') || activeVideo.includes('youtu.be') ? (
               <iframe
                 src={`https://www.youtube.com/embed/${activeVideo.match(/(?:v=|youtu\.be\/)([^&]+)/)?.[1]}?autoplay=1&mute=0&controls=0&rel=0&showinfo=0&modestbranding=1&vq=hd1080&playsinline=1`}
                 allow="autoplay; fullscreen; encrypted-media"
                 allowFullScreen
-                style={{ 
-                  border: 'none', 
-                  width: '100%', 
-                  height: '100%', 
+                style={{
+                  border: 'none',
+                  width: '100%',
+                  height: '100%',
                   pointerEvents: 'none',
                   transform: 'scale(1.25) translateY(-4%)'
                 }}
