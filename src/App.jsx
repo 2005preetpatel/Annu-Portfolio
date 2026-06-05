@@ -300,10 +300,22 @@ export default function App() {
             </span>
           </motion.div>
 
-          {/* Navigation Links */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }} style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
+          {/* Navigation Links + Social Icons */}
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }} style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
             <a href="#work" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Works</a>
             <a href="#about" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Studio</a>
+            {/* Social Icons */}
+            <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+              <a href="https://www.instagram.com/annu_ananya__/" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
+                <Instagram size={15} />
+              </a>
+              <a href="https://www.linkedin.com/in/ananya-sharma-600702330" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
+                <Linkedin size={15} />
+              </a>
+              <a href="https://wa.me/917693076360" target="_blank" rel="noopener noreferrer" className="hover-target" style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none', transition: 'border-color 0.3s ease, background 0.3s ease' }} onMouseEnter={e => { e.currentTarget.style.borderColor='var(--accent-color)'; e.currentTarget.style.background='rgba(243,208,118,0.1)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.2)'; e.currentTarget.style.background='transparent'; }}>
+                <Whatsapp size={15} />
+              </a>
+            </div>
             <a href="#contact" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '0.75rem', background: 'var(--accent-color)', color: '#000', border: 'none', borderRadius: '100px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Let's Talk
             </a>
@@ -536,21 +548,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Right Column */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1.5rem' }}>
-                <h4 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#fff', margin: 0, letterSpacing: '0.05em' }}>Follow Along</h4>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <a href="https://www.instagram.com/annu_ananya__/" target="_blank" rel="noopener noreferrer" className="social-icon-btn instagram hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
-                    <Instagram size={22} />
-                  </a>
-                  <a href="https://www.linkedin.com/in/ananya-sharma-600702330" target="_blank" rel="noopener noreferrer" className="social-icon-btn linkedin hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
-                    <Linkedin size={22} />
-                  </a>
-                  <a href="https://wa.me/917693076360" target="_blank" rel="noopener noreferrer" className="social-icon-btn whatsapp hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
-                    <Whatsapp size={22} />
-                  </a>
-                </div>
-              </div>
+
 
             </div>
 
