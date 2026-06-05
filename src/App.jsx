@@ -304,6 +304,40 @@ export default function App() {
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }} style={{ display: 'flex', gap: '3rem', alignItems: 'center' }}>
             <a href="#work" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Works</a>
             <a href="#about" className="subtitle transition-colors duration-300 hover:text-white" style={{ fontSize: '0.75rem', fontWeight: 500 }}>Studio</a>
+            {/* Acting Portfolio Highlighted Link */}
+            <a
+              href="https://ananyasharmaacting.netlify.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-color)',
+                textDecoration: 'none',
+                padding: '0.5rem 1.2rem',
+                border: '1px solid var(--accent-color)',
+                borderRadius: '100px',
+                position: 'relative',
+                transition: 'background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = 'var(--accent-color)';
+                e.currentTarget.style.color = '#000';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(243,208,118,0.4)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = 'var(--accent-color)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+            >
+              ✦ Acting Portfolio
+            </a>
             <a href="#contact" className="btn btn-primary" style={{ padding: '0.8rem 2rem', fontSize: '0.75rem', background: 'var(--accent-color)', color: '#000', border: 'none', borderRadius: '100px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
               Let's Talk
             </a>
