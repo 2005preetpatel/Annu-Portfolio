@@ -548,7 +548,21 @@ export default function App() {
                 </div>
               </div>
 
-
+              {/* Right Column */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1.5rem' }}>
+                <h4 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-serif)', fontWeight: 400, color: '#fff', margin: 0, letterSpacing: '0.05em' }}>Follow Along</h4>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                  <a href="https://www.instagram.com/annu_ananya__/" target="_blank" rel="noopener noreferrer" className="social-icon-btn instagram hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
+                    <Instagram size={22} />
+                  </a>
+                  <a href="https://www.linkedin.com/in/ananya-sharma-600702330" target="_blank" rel="noopener noreferrer" className="social-icon-btn linkedin hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
+                    <Linkedin size={22} />
+                  </a>
+                  <a href="https://wa.me/917693076360" target="_blank" rel="noopener noreferrer" className="social-icon-btn whatsapp hover-target" style={{ width: '55px', height: '55px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.2)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#fff', textDecoration: 'none' }}>
+                    <Whatsapp size={22} />
+                  </a>
+                </div>
+              </div>
 
             </div>
 
